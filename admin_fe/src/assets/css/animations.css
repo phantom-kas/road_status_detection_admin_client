@@ -1,0 +1,126 @@
+/* body{
+  background-color: #efefef;
+} */
+
+/* button{
+  font-family: 'Roboto';
+  font-size: 24px;
+  padding: 1em 2em;
+  margin: 2px;
+  border: 0;
+  outline: 0;
+  color: white;
+  background-color: #2196f3;
+  text-transform: uppercase;
+  border-radius: 0.15em;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3 );
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+} */
+.hov_glow:hover{
+  background-color: var(--color-background-soft);
+}
+.bgvcol1.hov_glow:hover{
+  background-color: var(--color1-soft);
+}
+
+.ripple>div{
+  border-radius: 50%;
+  background-color: var(--color-background-mute);
+  position: absolute;
+  transform: scale(0);
+  animation: ripple 0.4s linear;
+  /* z-index: -1; */
+ 
+}
+
+@keyframes ripple{
+  to{
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+.hlt{
+  /* box-shadow: 0 0 0 30px green; */
+}
+.hlt{
+  transition: box-shadow 0.5s ;
+}
+.hlt:active{
+  box-shadow: 0 0 0 1px var(--color-text)
+}
+
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+
+.list1-move, /* apply transition to moving elements */
+.list1-enter-active,
+.list1-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list1-enter-from,
+.list1-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list1-leave-active {
+  position: absolute;
+}
+
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+
+.list1-move, /* apply transition to moving elements */
+.list1-enter-active,
+.list1-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list1-enter-from,
+.list1-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list1-leave-active {
+  position: absolute;
+}

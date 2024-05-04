@@ -57,6 +57,9 @@
   margin: 0;
   font-weight: normal;
 }
+a {
+  text-decoration: none;
+}
 
 body {
   min-height: 100vh;
@@ -83,4 +86,32 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.rbg {
+  background-color: red;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px var(--color-background);
+  border-radius: 5px;
+  background-color: var(--color-background);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: var(--color-text);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 6px var(--color-text);
+  background-color: var(--color-text);
 }
