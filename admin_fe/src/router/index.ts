@@ -50,14 +50,21 @@ const router = createRouter({
               ]
             }
           ]
+        },
+        {
+          path: '/other',
+          name: 'other',
+
+          component: () => import('../views/other_base.vue'),
+          children: [
+            {
+              name: 'login',
+              path: '/login',
+              component: () => import('../views/login_view.vue')
+            }
+          ]
         }
       ]
-    },
-    {
-      path: '/other',
-      name: 'other',
-
-      component: () => import('../views/other_base.vue')
     }
   ]
 })

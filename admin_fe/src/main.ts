@@ -13,14 +13,25 @@ import {
   faEllipsisVertical,
   faTrash,
   faPencil,
-  faTrashCan
+  faTrashCan,
+  faArrowRightFromBracket,
+  faLock,
+  faUser,
+  faCircleXmark,
+  faTriangleExclamation,
+  faCircleInfo,
+  faXmark
 } from '@fortawesome/free-solid-svg-icons'
 
-import {} from '@fortawesome/free-regular-svg-icons'
+import { faCircleUser, faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 
 import {} from '@fortawesome/free-brands-svg-icons'
 
 library.add(
+  faXmark,
+  faCircleInfo,
+  faTriangleExclamation,
+  faCircleXmark,
   faChevronRight,
   faTrash,
   faEllipsisVertical,
@@ -30,12 +41,17 @@ library.add(
   faSun,
   faMoon,
   faPencil,
-  faTrashCan
+  faTrashCan,
+  faCircleUser,
+  faArrowRightFromBracket,
+  faLock,
+  faUser,
+  faCircleCheck
 )
 
 import App from './App.vue'
 import router from './router'
-
+import './interceptors/axios.ts'
 const app = createApp(App)
 
 app.use(createPinia())

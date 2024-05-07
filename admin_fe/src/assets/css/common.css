@@ -630,3 +630,6 @@
 .plr0 {
   padding-inline: 0px;
 }
+.no_point {
+  pointer-events: none;
+}

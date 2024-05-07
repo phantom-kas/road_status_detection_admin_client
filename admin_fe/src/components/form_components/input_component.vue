@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps({
   label: {
     type: String,
     required: true
   },
-    name: {
+  name: {
     type: String,
     required: true
   },
@@ -28,38 +28,50 @@ const props = defineProps({
   }
 })
 
+
+defineEmits(['inputed'])
 let vall = ref(props.val)
 </script>
 <template>
   <div class="field-group">
-    <input :disabled="disabled" v-model="vall" :class = "[{'date_blur':  !vall},{'date_focus':vall}]"    @input="$emit('inputed', {name:name,value:vall})"  :type="tp" :required = "required" :name="name" :id="name" />
-    <label class="floating-label"  :for="name"> {{ label }} </label>
+    <input :disabled="disabled" v-model="vall" :class="[{ 'date_blur': !vall }, { 'date_focus': vall }]"
+      @input="$emit('inputed', { name: name, value: vall })" :type="tp" :required="required" :name="name" :id="name" />
+    <label class="floating-label" :for="name"> {{ label }} </label>
   </div>
 </template>
 
 <style scoped>
-:root {
-}
-.field-group input{
+:root {}
+
+.field-group input {
   outline: none;
 }
-.field-group input[type="text"],.field-group input[type="date"],.QUILL,.field-group select ,.field-group input[type="number"] ,.field-group input[type="password"],.field-group input[type="email"]{
+
+.field-group input[type="text"],
+.field-group input[type="date"],
+.QUILL,
+.field-group select,
+.field-group input[type="number"],
+.field-group input[type="password"],
+.field-group input[type="email"] {
   /* border: 1px solid var(--txt_input_bg_col) */
   border: none;
 }
+
 .field-group {
-  --txt_input_bg_col: var(--color-background-2);
-  --txt_input_fs:var(--fs2);
+  --txt_input_bg_col: var(--color-background);
+  --txt_input_fs: var(--fs2);
   --txt_input_leftpd: 0.8rem;
-    --txt_input_blck_pd: 0.7rem;
+  --txt_input_blck_pd: 0.7rem;
   position: relative;
   font-size: var(--txt_input_fs);
   height: min-content;
-  background-color: var(--color-background-2);
- 
+  background-color: var(--color-background);
+
 }
+
 .field-group.rr {
-  border-radius:5px ;
+  border-radius: 5px;
 }
 
 .field-group label {
@@ -78,7 +90,7 @@ let vall = ref(props.val)
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 .field-group input {
@@ -91,28 +103,30 @@ let vall = ref(props.val)
   /* height: 100%; */
 }
 
-.field-group input[type="text"]:focus + .floating-label,
-.field-group input[type="number"]:focus + .floating-label,
-.field-group input[type="date"]:focus + .floating-label,
-.field-group input[type="email"]:focus + .floating-label,
+.field-group input[type="text"]:focus+.floating-label,
+.field-group input[type="number"]:focus+.floating-label,
+.field-group input[type="date"]:focus+.floating-label,
+.field-group input[type="email"]:focus+.floating-label,
 
-.field-group input[type="password"]:focus + .floating-label,
-.date_focus + .floating-label{
+.field-group input[type="password"]:focus+.floating-label,
+.date_focus+.floating-label {
   top: calc(-0.5 * var(--txt_input_fs));
   font-size: calc(0.8 * var(--txt_input_fs));
   background-color: var(--txt_input_bg_col);
-  color: var(--color-text)  !important;
+  color: var(--color-text) !important;
   /* border: 4rem solid gold; */
   line-height: initial;
-/* color:red  !important; */
+  /* color:red  !important; */
   height: initial;
   width: initial;
   display: initial;
 }
-.field-group input[type="date"]:focus{
+
+.field-group input[type="date"]:focus {
   color: black !important;
 }
-.date_blur{
+
+.date_blur {
   color: transparent
 }
 
