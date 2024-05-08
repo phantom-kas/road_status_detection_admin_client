@@ -21,7 +21,7 @@ const props = defineProps({
 })
 </script>
 <template>
-  <div class="h-flex mxpw fs-fs gp05rem pos_rel pos_sticky">
+  <div class="h-flex mxpw fs-fs  gp05rem pos_rel pos_sticky bg2 z1">
 
     <div class='horizontal_nav_cc' v-for="n, i in btns" :key="i">
 

@@ -4,9 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { ref } from 'vue'
 import axios from 'axios';
 import { useRouter } from 'vue-router';
-import { userInfo } from 'os';
+import { useUserStore } from "../stores/user.ts";
 
 const signinForm = ref({ username: '', password: '' })
+
+
+const userStore = useUserStore();
 
 
 const router = useRouter()
@@ -14,6 +17,15 @@ const router = useRouter()
 const handleSubmit = () => {
   axios.post('users/signin?user_name', signinForm.value, { _load: true })
     .then(res => {
+
+
+      axios.defaults.headers.common["Authorization"] =
+        "Bearer " + null;
+      userStore.SetTokens(res.data.refreshToken, null)
+      userStore.setUserInfo(res.data.data)
+      userStore.profile_img_url_root = res.data.profile_img_url_root
+
+
       console.log(res.data.status)
       if (res.data.status == 'success') {
         router.push({ name: 'dashboard' })

@@ -132,6 +132,10 @@ const props = defineProps({
   right: 0px;
 }
 
+.dd_to_left_i>.dd_menu {
+  right: 0px !important;
+}
+
 .dd_to_right>.dd_menu {
   left: 0px;
 }

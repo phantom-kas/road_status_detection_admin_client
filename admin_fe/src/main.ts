@@ -20,15 +20,22 @@ import {
   faCircleXmark,
   faTriangleExclamation,
   faCircleInfo,
-  faXmark
+  faXmark,
+  faUsers,
+  faPlus,
+  faFileCircleXmark
 } from '@fortawesome/free-solid-svg-icons'
 
-import { faCircleUser, faCircleCheck } from '@fortawesome/free-regular-svg-icons'
+import { faCircleUser, faCircleCheck, faFile } from '@fortawesome/free-regular-svg-icons'
 
 import {} from '@fortawesome/free-brands-svg-icons'
 
 library.add(
+  faFileCircleXmark,
   faXmark,
+  faFile,
+  faPlus,
+  faUsers,
   faCircleInfo,
   faTriangleExclamation,
   faCircleXmark,

@@ -110,12 +110,12 @@ export const useUserStore = defineStore('user', () => {
 
   const getInfoByKey = computed(() => (key: string | number) => userInfo.value[key])
 
-  const SetTokens = (Rtoken: string, AToken: string) => {
+  const SetTokens = (Rtoken: string, AToken: string | null) => {
     user.value.refresh_token = Rtoken
-    user.value.access_token = AToken
+    if (AToken) user.value.access_token = AToken
     getRToken.value = Rtoken
 
-    getAToken.value = AToken
+    if (AToken) getAToken.value = AToken
   }
 
   const setRtoken = (Rtoken: string) => {

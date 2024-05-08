@@ -6,12 +6,13 @@ const route = useRoute()
 <template>
   <section class="pglr mxpw h-flex fs-fs gp1rem mxph">
 
-    <div :class="{ 'fg1': route.name == 'cameras' }" class="mxph">
+    <div class="mxph cams_b fg1" :class="{ 'on_cams_b': route.name !== 'cameras' }">
       <cameras_view class="mxph overflow_scroll overflowx_hidden" />
     </div>
     <div :class="{ 'fg1': route.name !== 'cameras' }">
       <router-view class=""></router-view>
     </div>
+    
 
   </section>
 </template>
@@ -19,5 +20,25 @@ const route = useRoute()
 .cams_b {
   overflow: hidden;
   max-height: 100%;
+}
+
+.cams_b {
+  position: sticky;
+  top: 0;
+}
+
+.cams_b.fg1 {
+  /* background-color: yellow; */
+}
+
+.on_cams_b {
+  flex-grow: unset;
+}
+
+
+@media (max-width: 650px) {
+  .on_cams_b {
+    display: none;
+  }
 }
 </style>

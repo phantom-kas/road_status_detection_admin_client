@@ -37,16 +37,39 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
         </router-link>
 
 
-        <div class="nav_btn_c hv_ic_shw">
-          <div><font-awesome-icon :icon="['fas', 'chevron-right']" /> </div>
+
+        <router-link :to="{ name: 'users' }" class="nav_btn_c hv_ic_shw">
+          <div><font-awesome-icon :icon="['fas', 'users']" /> </div>
           <span>Users</span>
-        </div>
+        </router-link>
 
 
         <div class="nav_btn_c hv_ic_shw">
-          <div><font-awesome-icon :icon="['fas', 'chevron-right']" /> </div>
+          <div><font-awesome-icon :icon="['far', 'file']" /> </div>
           <span>Reports</span>
         </div>
+
+        <drop_wrap class="mxpw deop  dd_to_left col_blk" :content="[
+          { label: 'Add Camera', icon: ['fas', 'video'], route: { name: 'login' } },
+          { label: 'Add User', icon: ['fas', 'user'], route: { name: 'login' } },
+        ]">
+
+
+          <template #icon>
+            <div data-dd-btn class='cursor_pointer mxpw  no_wrap'>
+
+
+              <div class="nav_btn_c hv_ic_shw no_point">
+                <div>
+
+                  <font-awesome-icon :icon="['fas', 'plus']" size="xl" />
+                </div>
+                <span>Add</span>
+              </div>
+            </div>
+
+          </template>
+        </drop_wrap>
 
       </div>
 
@@ -100,6 +123,8 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
 
           </template>
         </drop_wrap>
+
+
 
       </div>
     </div>

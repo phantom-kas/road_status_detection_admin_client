@@ -633,3 +633,8 @@
 .no_point {
   pointer-events: none;
 }
+
+.dd_to_left_i > .dd_menu {
+  right: 0px !important;
+  left: unset !important;
+}

@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import { useRTStore } from '../stores/route.ts'
+import camera_routes from './camera_routes.ts'
+
+import user_routes from './user_routes.ts'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -31,24 +34,8 @@ const router = createRouter({
               },
               component: () => import('../views/dash_board.vue')
             },
-            {
-              path: 'cameras',
-              name: 'cameras',
-              meta: {
-                //       needsAuth: true,
-                title: 'Cameras'
-              },
-
-              component: () => import('../views/cameras/cameras_base.vue'),
-
-              children: [
-                {
-                  path: '/camera',
-                  name: 'camera',
-                  component: () => import('../views/cameras/camera_base.vue')
-                }
-              ]
-            }
+            ...camera_routes,
+            ...user_routes
           ]
         },
         {
@@ -86,4 +73,5 @@ router.beforeEach((to, from, next) => {
     return
   }
 })
+
 export default router

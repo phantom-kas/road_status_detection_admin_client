@@ -16,7 +16,9 @@ axios.interceptors.request.use((req) => {
   const user = useUserStore()
   if (user.getAToken != undefined) {
     req.headers.Authorization = 'Bearer ' + user.getAToken
+    // window.alert('dsadsa')
   }
+
   if (req._load !== undefined) {
     if (req._load) {
       console.log('begin loading')
@@ -80,7 +82,7 @@ axios.interceptors.response.use(
 
       return (
         axios({
-          url: 'user/getNewToken',
+          url: 'users/getNewToken',
           method: 'POST',
           data: {
             refresh_token: user.getRToken
@@ -97,7 +99,7 @@ axios.interceptors.response.use(
           })
           .then((res) => {
             user.SetTokens(res.data.refreshToken, res.data.accessToken)
-            // window.alert(res.data.accessToken)
+            //window.alert(res.data.accessToken)
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.accessToken
             originalRequest.headers.Authorization = axios.defaults.headers.common['Authorization']
             refresh = false

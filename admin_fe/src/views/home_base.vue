@@ -16,7 +16,7 @@ const rt = useRTStore()
         <h4 class='fs6' v-html="rt.getTitle"></h4>
       </div>
       <div id='body' class=" mxpw">
-        <router-view></router-view>
+        <router-view class="overflow_scroll overflowx_hidden"></router-view>
       </div>
     </div>
 
