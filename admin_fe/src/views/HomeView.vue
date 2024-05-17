@@ -19,6 +19,7 @@ const loader = useLoaderStore();
     </router-view>
 
     <div id='modals'></div>
+
   </main>
 
 

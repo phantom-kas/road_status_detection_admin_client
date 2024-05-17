@@ -638,3 +638,9 @@
   right: 0px !important;
   left: unset !important;
 }
+.mglra {
+  margin-inline: auto;
+}
+.bgselected {
+  background-color: var(--color2) !important;
+}

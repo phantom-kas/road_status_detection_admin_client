@@ -10,9 +10,21 @@ const route = useRoute()
       <cameras_view class="mxph overflow_scroll overflowx_hidden" />
     </div>
     <div :class="{ 'fg1': route.name !== 'cameras' }">
-      <router-view class=""></router-view>
+      <!-- <router-view class=""></router-view> -->
+
+
+      <router-view v-slot="{ Component }">
+        <transition name="slide-fade" mode="out-in">
+          <component :key="route.params.id" :is="Component" />
+
+
+        </transition>
+      </router-view>
     </div>
-    
+
+
+
+
 
   </section>
 </template>

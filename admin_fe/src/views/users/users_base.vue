@@ -13,7 +13,7 @@ const updateKey = (e) => {
 <template>
   <section class="pglr mxpw h-flex fs-fs gp1rem mxph">
 
-    <div :class="{ 'fg1': route.name == 'users' }" class="mxph">
+    <div :class="[{ 'fg1': route.name == 'users' }, { 'on_u_b': route.name != 'users' }]" class="mxph">
       <users_view @refreshparent="e => updateKey(e)" class="mxph overflow_scroll overflowx_hidden" />
     </div>
     <div :class="{ 'fg1': route.name !== 'users' }">
@@ -51,5 +51,17 @@ const updateKey = (e) => {
 .slide-fade-leave-to {
   transform: translateX(-50px) !important;
   opacity: 0 !important;
+}
+
+
+.on_u_b {
+  position: sticky;
+  top: 0px;
+}
+
+@media (max-width: 650px) {
+  .on_u_b {
+    display: none;
+  }
 }
 </style>

@@ -23,7 +23,7 @@ const props = defineProps({
 <template>
   <div class="h-flex mxpw fs-fs  gp05rem pos_rel pos_sticky bg2 z1">
 
-    <div class='horizontal_nav_cc' v-for="n, i in btns" :key="i">
+    <div class='horizontal_nav_cc lh1' v-for="n, i in btns" :key="i">
 
       <router-link class=' cursor_pointer v-flex c-c' v-if="n.is_route" :to="n.route">
         {{ n.name }}

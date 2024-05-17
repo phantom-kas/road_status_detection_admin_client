@@ -25,7 +25,8 @@ const rt = useRTStore()
 </template>
 <style scoped>
 .view {
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: 100vh;
   height: 100dvh;
 }

@@ -25,9 +25,34 @@ export default [
             props: (route: { params: { id: any } }) => ({
               id: route.params.id
             })
+          },
+          {
+            path: 'premissions',
+            name: 'premissions',
+            component: () => import('../components/premissions_component.vue'),
+            props: (route: { params: { id: any } }) => ({
+              id: route.params.id
+            })
+          },
+          {
+            path: 'edit_user',
+            name: 'edit_user',
+            component: () => import('../components/form_components/edit_user_form.vue'),
+            props: (route: { params: { id: any } }) => ({
+              id: route.params.id
+            })
           }
         ]
       }
     ]
+  },
+  {
+    path: 'add_user',
+    name: 'add_user',
+    meta: {
+      //       needsAuth: true,
+      title: 'Users'
+    },
+    component: () => import('../views/users/add_user.vue')
   }
 ]

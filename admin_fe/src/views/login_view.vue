@@ -23,8 +23,8 @@ const handleSubmit = () => {
         "Bearer " + null;
       userStore.SetTokens(res.data.refreshToken, null)
       userStore.setUserInfo(res.data.data)
-      userStore.profile_img_url_root = res.data.profile_img_url_root
 
+      userStore.profile_img_url_root = res.data.profile_img_dir_url
 
       console.log(res.data.status)
       if (res.data.status == 'success') {

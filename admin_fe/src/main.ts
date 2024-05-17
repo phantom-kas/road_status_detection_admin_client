@@ -23,7 +23,9 @@ import {
   faXmark,
   faUsers,
   faPlus,
-  faFileCircleXmark
+  faFileCircleXmark,
+  faCamera,
+  faSliders
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faCircleUser, faCircleCheck, faFile } from '@fortawesome/free-regular-svg-icons'
@@ -31,6 +33,8 @@ import { faCircleUser, faCircleCheck, faFile } from '@fortawesome/free-regular-s
 import {} from '@fortawesome/free-brands-svg-icons'
 
 library.add(
+  faSliders,
+  faCamera,
   faFileCircleXmark,
   faXmark,
   faFile,

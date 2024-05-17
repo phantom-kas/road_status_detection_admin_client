@@ -23,6 +23,7 @@ const props = defineProps({
 pageContent.mount()
 
 onMounted(() => {
+
   pageContent.observAndFetch({ url: props.url, params: props.params });
 })
 
@@ -39,15 +40,18 @@ onMounted(() => {
         </tr>
       </slot>
       <transition-group name="list">
-        <tr  class="cursor_pointer hov_glow" v-for="(content, i) in pageContent.pageContent" :key="content.id">
-          <slot  name="item" v-bind="{ item: content, index: i }">
+        <tr class="cursor_pointer hov_glow" v-for="(content, i) in pageContent.pageContent" :key="content.id">
+          <slot name="item" v-bind="{ item: content, index: i }">
 
           </slot>
         </tr>
       </transition-group>
 
     </table>
-
+    <!-- {{ //pageContent.last_id
+    }}
+    {{ //pageContent.loadMore
+    }} -->
     <span v-show="pageContent.loadMore" id="observe">
       <load_spin />
     </span>

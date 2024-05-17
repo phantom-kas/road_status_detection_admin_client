@@ -25,11 +25,14 @@ export const pageFiller = defineStore('pageFiller', () => {
     //   type:'support',
     //   lim:10
     // }
+    // window.alert(last_id.value)
     if (last_id.value != 0) {
       params.last_id = last_id.value
+    } else {
+      params.last_id = undefined
     }
     if (route.query.search) params.ss = route.query.search
-
+    //window.alert(params.last_id)
     axios
       .get(url, { params })
       .then((res) => {
@@ -50,7 +53,8 @@ export const pageFiller = defineStore('pageFiller', () => {
         } else {
           loadMore.value = true
         }
-        last_id.value = pageContent.value[pageContent.value.length - 1][key]
+        if (pageContent.value.length > 0)
+          last_id.value = pageContent.value[pageContent.value.length - 1][key]
 
         return true
         //.alert(last_id.value)
@@ -97,6 +101,7 @@ export const pageFiller = defineStore('pageFiller', () => {
     fetchContent,
     observAndFetch,
     mount,
+    last_id,
     loadMore,
     profileImgRootUrl
   }

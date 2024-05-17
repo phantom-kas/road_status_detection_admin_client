@@ -18,16 +18,19 @@ onBeforeMount(() => {
   axios.get('users/get_users', { params: { uid: props.id } })
     .then(res => {
       user_info.value = res.data.data[0]
+      if (user_info.value)
+        user_info.value.img_dir = res.data.profile_img_url
     })
 
 })
 </script>
 <template>
-  <div class='v-flex mxpw fs-fs chead'>
-
+  <div v-if="user_info" class='v-flex mxpw fs-fs chead'>
+    <!-- {{ user_info }} -->
     <div class="h-flex fs-c gp1rem bgmute sdw1">
       <div>
-        <img v-if="!imgError" src="" alt="" @error="imgError = true">
+        <img v-if="!imgError" class="round ppimg" :src="user_info?.img_dir as string + user_info?.profile_img_url"
+          @error="imgError = true">
         <font-awesome-icon v-else :icon="['far', 'circle-user']" size='6x' class="nopoint" />
       </div>
 
@@ -47,5 +50,9 @@ onBeforeMount(() => {
   padding-inline: 1rem;
   padding-block: 0.5rem;
   border-radius: 20px;
+}
+
+.ppimg {
+  width: 5rem;
 }
 </style>

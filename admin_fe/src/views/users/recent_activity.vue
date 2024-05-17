@@ -32,7 +32,7 @@ const props = defineProps({
       </template>
       <template #item="{ item, index }">
         <td>
-          <user_avatar_icon :url="'img.png'" username="dsadsa" />
+          <user_avatar_icon :url="item.profile_img_url" username="dsadsa" />
         </td>
 
         <td>

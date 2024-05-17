@@ -40,6 +40,7 @@ export const useUserStore = defineStore('user', () => {
   )
 
   const countries = ref(useLocalStorage('countries', []))
+  const profileImgDir = ref(useLocalStorage('profileImgDir', ''))
 
   const getRToken = ref(useLocalStorage('rtoken', ''))
   const getAToken = ref(useLocalStorage('atoken', ''))
@@ -222,6 +223,7 @@ export const useUserStore = defineStore('user', () => {
     isDoctor,
     isSpecialist,
     isAccountant,
-    isReceptionist
+    isReceptionist,
+    profileImgDir
   }
 })

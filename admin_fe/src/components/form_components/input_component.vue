@@ -124,6 +124,11 @@ let vall = ref(props.val)
 
 .field-group input[type="date"]:focus {
   color: black !important;
+
+}
+
+.field-group input[type="date"] {
+  color-scheme: dark;
 }
 
 .date_blur {
@@ -132,5 +137,10 @@ let vall = ref(props.val)
 
 .field-group input {
   /* min-width: 150px; */
+}
+
+.field-group input[type="date"]::-webkit-calendar-picker-indicator {
+  background-color: var(--color2);
+  border-radius: 5px;
 }
 </style>

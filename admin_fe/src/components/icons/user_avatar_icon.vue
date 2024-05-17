@@ -2,7 +2,7 @@
 import { useUserStore } from '@/stores/user';
 import { ref } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-const { userInfo } = useUserStore()
+const { profile_img_url_root } = useUserStore()
 const imgError = ref(false)
 const props = defineProps({
   url: {
@@ -15,15 +15,17 @@ const props = defineProps({
 </script>
 <template>
   <div class=" cursor_pointer uicon h-flex  fs-c gp05rem hov_glow_col1">
-    <!-- {{ userInfo.profile_img_url + url }} -->
+    {{ }}
     <!-- {{ imgError }} -->
     <div v-if="!imgError" class="avartar_img">
-      <img @error="imgError = true" class="mxpw" :src="userInfo.profile_img_url + url" alt="">
+      <img v-if="url" @error="imgError = true" class="mxpw" :src="profile_img_url_root + url" alt="">
     </div>
     <font-awesome-icon v-else :icon="['far', 'circle-user']" size='xl' class="nopoint" />
     <div>
       {{ username }}
     </div>
+    <!-- {{ profile_img_url_root + url }} -->
+
   </div>
 </template>
 <style scoped>

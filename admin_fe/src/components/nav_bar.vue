@@ -51,7 +51,7 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
 
         <drop_wrap class="mxpw deop  dd_to_left col_blk" :content="[
           { label: 'Add Camera', icon: ['fas', 'video'], route: { name: 'login' } },
-          { label: 'Add User', icon: ['fas', 'user'], route: { name: 'login' } },
+          { label: 'Add User', icon: ['fas', 'user'], route: { name: 'add_user' } },
         ]">
 
 
