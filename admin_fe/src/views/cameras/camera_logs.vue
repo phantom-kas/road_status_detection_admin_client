@@ -102,7 +102,7 @@ onMounted(() => {
             Camera
           </th>
           <th>
-            Report
+            Class
           </th>
           <th>
             Location

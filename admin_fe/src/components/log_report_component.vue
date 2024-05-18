@@ -11,10 +11,16 @@ const props = defineProps({
   log: {
     type: Object,
     default: null
+  },
+  dir: {
+    type: String,
+    default: null
   }
 })
 const flog = ref<any | null>(props.log)
+const udir = axios.getUri() + 'uploads'
 onMounted(() => {
+
   if (flog.value) return
   axios.get('cameras/get_logs', { params: { id: props.id } })
     .then(res => {
@@ -30,7 +36,7 @@ onMounted(() => {
     <div class="h-flex fe-c mxpw ">
       <FontAwesomeIcon @click="$emit('close')" :icon="['fas', 'xmark']" size="xl" />
     </div>
-    <v_image url="/src/assets/images/image.png" class="mb1" alt="" />
+    <v_image :url="udir + flog.image_url" class="mb1" alt="" />
     <div class="li"><span>Camera Id</span><span>{{ flog.cam_id }}</span></div>
     <div class="li"><span>Time</span><span>{{ flog.created_at }}</span></div>
     <div class="li"><span>location</span><span>{{ flog.location }}</span></div>

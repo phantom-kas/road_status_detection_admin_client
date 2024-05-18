@@ -6,7 +6,7 @@ import { useRTStore } from '../stores/route.ts'
 const rt = useRTStore()
 </script>
 <template>
-  <div class='mxpw h-flex c-fs mxph'>
+  <div class='mxpw h-flex c-fs mxph bgsoft'>
 
     <nav_bar />
 
@@ -15,7 +15,7 @@ const rt = useRTStore()
       <div class='h-flex mxpw fs-c pglr'>
         <h4 class='fs6' v-html="rt.getTitle"></h4>
       </div>
-      <div id='body' class=" mxpw">
+      <div id='body' class=" mxpw ">
         <router-view class="overflow_scroll overflowx_hidden"></router-view>
       </div>
     </div>
