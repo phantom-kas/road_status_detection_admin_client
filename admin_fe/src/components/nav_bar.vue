@@ -44,10 +44,10 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
         </router-link>
 
 
-        <div class="nav_btn_c hv_ic_shw">
+        <router-link :to="{ name: 'all__logs' }" class="nav_btn_c hv_ic_shw">
           <div><font-awesome-icon :icon="['far', 'file']" /> </div>
           <span>Reports</span>
-        </div>
+        </router-link>
 
         <drop_wrap class="mxpw deop  dd_to_left col_blk" :content="[
           { label: 'Add Camera', icon: ['fas', 'video'], route: { name: 'login' } },

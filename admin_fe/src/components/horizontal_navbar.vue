@@ -72,6 +72,10 @@ const props = defineProps({
   z-index: 2;
 }
 
+.horizontal_nav_cc>* {
+  color: var(--color-text) !important;
+}
+
 .horizontal_nav_cc:hover>*::after {
   background-color: var(--color1);
 }

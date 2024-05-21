@@ -26,7 +26,8 @@ const is_showing_log = ref(false);
 
 const showlog = (item: any) => {
   emit('log', item)
-  router.push({ name: 'logs', params: { lid: item.id } })
+  if (props.id)
+    router.push({ name: 'logs', params: { lid: item.id } })
 }
 
 const filters = ref<{ classes: ModelClassesType[], date_from?: string, date_to?: string }>({ classes: [] })
@@ -84,7 +85,7 @@ onMounted(() => {
   <section class="max1200  ">
 
 
-    <div class="h-flex fr fs-c gp1rem pt1 pb1 ">
+    <div class="h-flex fr fs-c gp1rem pt1 pb1 ff">
       <button class="today bgmute hov_glow cursor_pointer pbtn round1">Today</button>
       <button class="today bgmute hov_glow cursor_pointer pbtn round1">This week</button>
       <button class="today bgmute hov_glow cursor_pointer pbtn round1">This month</button>
@@ -98,13 +99,13 @@ onMounted(() => {
 
       <template #table_header>
         <tr class='mxpw tb1 algn_l'>
-          <th>
+          <th class="row1">
             Camera
           </th>
           <th>
             Class
           </th>
-          <th>
+          <th class="row3">
             Location
           </th>
           <th>
@@ -114,7 +115,7 @@ onMounted(() => {
         <span></span>
       </template>
       <template #item="{ item, index }">
-        <td @click=showlog(item)>
+        <td @click=showlog(item) class="row1">
           <!-- <user_avatar_icon :url="'img.png'" username="dsadsa" /> -->
 
           <camera_avater_icon @click.stop.prevent :id="item.cam_id" :camera_name="'cam ' + item.cam_id" />
@@ -123,7 +124,7 @@ onMounted(() => {
         <td @click=showlog(item)>
           {{ item.report }} {{ item.report_id }}
         </td>
-        <td @click=showlog(item)>
+        <td @click=showlog(item) class="row3">
           {{ item.location }}
         </td>
         <td @click=showlog(item)>
@@ -153,7 +154,7 @@ onMounted(() => {
           <div class="h-flex fr fs-fs gp1rem">
             <span @click="handleFilterClass(c, i)" class="pbtn  round1 hov_glow_col1 cursor_pointer bg2 sdw1"
               :class="{ 'bgselected': c.selected }" v-for="c, i in classes" :key="i">
-              {{ c.class }} {{ c.report_id }}
+              {{ c.class }}
             </span>
           </div>
         </div>
@@ -171,5 +172,25 @@ onMounted(() => {
   overflow-y: scroll;
   overflow-x: hidden;
   /* margin-block: 2rem; */
+}
+
+.ff>* {
+  color: var(--color-text);
+}
+
+.ff>*:hover {
+  background-color: var(--color2);
+}
+
+@media screen and (max-width:400px) {
+
+  table .row3,
+  table .row1 {
+    display: none;
+  }
+
+  /* tr {
+    background: red !important;
+  } */
 }
 </style>

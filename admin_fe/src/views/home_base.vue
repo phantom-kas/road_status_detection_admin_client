@@ -1,9 +1,49 @@
 <script setup lang="ts">
-import input_component from "../components/form_components/input_component.vue";
+// import input_component from "../components/form_components/input_component.vue";
 import nav_bar from "../components/nav_bar.vue";
 import { useRTStore } from '../stores/route.ts'
+import { onMounted, onUnmounted } from 'vue'
+
+// import events from "events";
+import { pusherStore } from "../stores/pusherStore.ts";
+
+
+
 
 const rt = useRTStore()
+
+
+const PusherStore = pusherStore()
+
+
+onMounted(() => {
+  PusherStore.connectPusher()
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+onUnmounted(() => {
+})
 </script>
 <template>
   <div class='mxpw h-flex c-fs mxph bgsoft'>

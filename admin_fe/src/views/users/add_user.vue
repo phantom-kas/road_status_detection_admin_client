@@ -93,8 +93,8 @@ onMounted(() => {
 
         <div class="mxpw mt1 h-flex c-c gp1rem">
           <button type="button" v-if="!profileImage" @click="showSelectImgGal = true"
-            class="bgmute pbtn round1 hov_glow">
-            <font-awesome-icon :icon="['fas', 'camera']" size="xl" />
+            class="bgmute pbtn round1 cambtnc">
+            <font-awesome-icon class="cambtn" :icon="['fas', 'camera']" size="xl" />
           </button>
 
           <button type="button" v-else @click="showSelectImgGal = true" class="bgmute pbtn round1 hov_glow">
@@ -139,6 +139,14 @@ onMounted(() => {
 <style scoped>
 .sitxt {
   width: 5rem;
+}
+
+.cambtn {
+  color: var(--color-text);
+}
+
+.cambtnc:hover {
+  background-color: var(--color2);
 }
 
 .premc {

@@ -25,14 +25,16 @@ import {
   faPlus,
   faFileCircleXmark,
   faCamera,
-  faSliders
+  faSliders,
+  faArrowUpRightFromSquare
 } from '@fortawesome/free-solid-svg-icons'
-
+//arrow-up-right-from-square
 import { faCircleUser, faCircleCheck, faFile } from '@fortawesome/free-regular-svg-icons'
 
 import {} from '@fortawesome/free-brands-svg-icons'
 
 library.add(
+  faArrowUpRightFromSquare,
   faSliders,
   faCamera,
   faFileCircleXmark,
@@ -64,8 +66,6 @@ import App from './App.vue'
 import router from './router'
 import './interceptors/axios.ts'
 const app = createApp(App)
-
 app.use(createPinia())
 app.use(router)
-
 app.mount('#app')

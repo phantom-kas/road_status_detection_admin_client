@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import { useRTStore } from '../stores/route.ts'
 import camera_routes from './camera_routes.ts'
+import logs_routes from './logs_routes.ts'
 
 import user_routes from './user_routes.ts'
 const router = createRouter({
@@ -35,7 +36,8 @@ const router = createRouter({
               component: () => import('../views/dash_board.vue')
             },
             ...camera_routes,
-            ...user_routes
+            ...user_routes,
+            ...logs_routes
           ]
         },
         {

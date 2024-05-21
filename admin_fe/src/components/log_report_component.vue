@@ -36,7 +36,7 @@ onMounted(() => {
     <div class="h-flex fe-c mxpw ">
       <FontAwesomeIcon @click="$emit('close')" :icon="['fas', 'xmark']" size="xl" />
     </div>
-    <v_image :url="udir + flog.image_url" class="mb1" alt="" />
+    <v_image :box="flog.box.split(',')" :url="udir + flog.image_url" class="mb1" alt="" />
     <div class="li"><span>Camera Id</span><span>{{ flog.cam_id }}</span></div>
     <div class="li"><span>Time</span><span>{{ flog.created_at }}</span></div>
     <div class="li"><span>location</span><span>{{ flog.location }}</span></div>

@@ -96,7 +96,30 @@ export const pageFiller = defineStore('pageFiller', () => {
     if (target) observer.observe(target)
   }
 
+  const add = (msg: { [x: string]: any }) => {
+    // for (const key of Object.keys(msg)) {
+    //   if (key == 'model_id' || key == 'url' || key == 'location' || key == 'cam_id') {
+    //     continue
+    //   }
+    for (let i = 0; i < msg.data.length; i++) {
+      pageContent.value.unshift({
+        cam_id: msg['cam_id'],
+        created_at: msg.data[i].created_at,
+        location: msg['location'],
+        model_id: msg.model_id,
+        image_url: msg.data[i].image_url,
+        date: msg.data[i].date,
+        report_id: msg.data[i].report_id,
+        type: 'se',
+        id: msg.data[i].id,
+        box: msg.data[i].box,
+        report: msg.data[i].class
+      })
+    }
+  }
+
   return {
+    add,
     pageContent,
     fetchContent,
     observAndFetch,
