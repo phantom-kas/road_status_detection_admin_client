@@ -34,3 +34,10 @@ export interface ModelClassesType {
   selected?: boolean
   report_id: string
 }
+
+export type peerObjType = {
+  camera_name: string | null
+  peerConnection: RTCPeerConnection | null
+  dataChannel: RTCDataChannel | null
+  user_name: String | null
+}

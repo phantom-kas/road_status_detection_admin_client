@@ -35,9 +35,19 @@ const router = createRouter({
               },
               component: () => import('../views/dash_board.vue')
             },
+
             ...camera_routes,
             ...user_routes,
-            ...logs_routes
+            ...logs_routes,
+            {
+              path: 'feeds',
+              name: 'feeds',
+              meta: {
+                //       needsAuth: true,
+                title: 'Feed'
+              },
+              component: () => import('../views/cameras/cameras_feed.vue')
+            }
           ]
         },
         {

@@ -43,6 +43,11 @@ const c = (e: any) => {
         name: 'Logs',
         route: { name: 'logs' },
         is_route: true
+      },
+      {
+        name: 'feed',
+        route: { name: 'cam_feed' },
+        is_route: true
       }
       ]" />
       <div class="mxpw " :class="{ 'cs_log_r_c': lid }">

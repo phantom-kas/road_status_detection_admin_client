@@ -75,7 +75,8 @@ onMounted(async () => {
             <canvas ref="chartElement" id="acquisitions" class=" pos_rel"></canvas>
           </div>
         </div>
-      </div>{{ showDashBoard }}
+      </div>
+      <!-- {{ showDashBoard }} -->
 
 
       <div class="bgcol p1 round1 dashlogs overflowx_hidden">
@@ -87,7 +88,7 @@ onMounted(async () => {
           </router-link>
 
         </div>
-        <camera_logs class="" />
+        <camera_logs class="resss" />
       </div>
     </div>
   </section>

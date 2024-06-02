@@ -27,6 +27,14 @@ export default [
               id: route.params.id,
               lid: route.params.lid ?? null
             })
+          },
+          {
+            path: 'cam_feed-:lid?',
+            name: 'cam_feed',
+            component: () => import('../views/cameras/camera_feed.vue'),
+            props: (route: { params: { id: any; lid?: string } }) => ({
+              id: route.params.id
+            })
           }
         ]
       }

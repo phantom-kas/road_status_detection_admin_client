@@ -48,6 +48,10 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
           <div><font-awesome-icon :icon="['far', 'file']" /> </div>
           <span>Reports</span>
         </router-link>
+        <router-link :to="{ name: 'feeds' }" class="nav_btn_c hv_ic_shw">
+          <div><font-awesome-icon :icon="['fas', 'square-rss']" /></div>
+          <span>Feed</span>
+        </router-link>
 
         <drop_wrap class="mxpw deop  dd_to_left col_blk" :content="[
           { label: 'Add Camera', icon: ['fas', 'video'], route: { name: 'login' } },

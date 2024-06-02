@@ -53,7 +53,7 @@ onUnmounted(() => {
 
     <div class=' mxpw  fg1  view'>
       <div class='h-flex mxpw fs-c pglr'>
-        <h4 class='fs6' v-html="rt.getTitle"></h4>
+        <h4 class='fs6 mgl1' v-html="rt.getTitle"></h4>
       </div>
       <div id='body' class=" mxpw ">
         <router-view class="overflow_scroll overflowx_hidden"></router-view>

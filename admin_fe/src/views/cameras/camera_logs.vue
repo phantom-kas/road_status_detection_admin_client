@@ -122,10 +122,13 @@ onMounted(() => {
         </td>
 
         <td @click=showlog(item)>
-          {{ item.report }} {{ item.report_id }}
+          {{ item.report }}
+          <!-- {{ item.report_id }} -->
         </td>
         <td @click=showlog(item) class="row3">
-          {{ item.location }}
+          <span>
+            {{ item.location }}
+          </span>
         </td>
         <td @click=showlog(item)>
 
@@ -192,5 +195,17 @@ onMounted(() => {
   /* tr {
     background: red !important;
   } */
+}
+
+.resss .row3,
+.resss .row3>span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 4rem;
+}
+
+.resss .row3>span {
+  display: block;
 }
 </style>

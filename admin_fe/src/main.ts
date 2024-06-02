@@ -26,14 +26,22 @@ import {
   faFileCircleXmark,
   faCamera,
   faSliders,
-  faArrowUpRightFromSquare
+  faArrowUpRightFromSquare,
+  faSquareRss
 } from '@fortawesome/free-solid-svg-icons'
 //arrow-up-right-from-square
-import { faCircleUser, faCircleCheck, faFile } from '@fortawesome/free-regular-svg-icons'
+import {
+  faCircleUser,
+  faCircleCheck,
+  faFile,
+  faCirclePlay
+} from '@fortawesome/free-regular-svg-icons'
 
 import {} from '@fortawesome/free-brands-svg-icons'
 
 library.add(
+  faCirclePlay,
+  faSquareRss,
   faArrowUpRightFromSquare,
   faSliders,
   faCamera,
