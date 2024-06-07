@@ -6,15 +6,8 @@ import camera_avater_icon from '@/components/icons/camera_avater_icon.vue';
 
 type camobj = { name: string, id: string }
 const cams = ref<camobj[]>(
-  [{ name: 'dsadsa', id: '2' },
-  { name: 'dsadsa', id: '2' },
-  { name: 'dsadsa', id: '2' },
-  { name: 'dsadsa', id: '2' },
-  { name: 'dsadsa', id: '2' },
-  { name: 'dsadsa', id: '2' },
-  { name: 'dsadsa', id: '2' },
-  { name: 'dsadsa', id: '2' },
-  { name: 'dsadsa', id: '2' },
+  [{ name: 'dsadsa', id: '1' },
+
 
 
   ])
@@ -33,11 +26,11 @@ const t = (p: any) => window.alert(p)
         cam {{ i }}
       </router-link> -->
 
-      <camera_avater_icon :id="'1'" :camera_name="'cam ' + i" />
+      <camera_avater_icon :id="'1'" :camera_name="'cam ' + c.id" />
       <drop_wrap @bim="e => d(e)" @trash="e => t(e)" class="  dd_to_left_i col_blk" :content="[
-        { label: 'hi', icon: ['fas', 'trash'], emit: ['bim', 'ligma'] },
-        { label: 'trash', icon: ['fas', 'trash'], emit: ['trash', 'bob'] },
-        { label: 'Todash', icon: ['fas', 'trash'], route: { name: 'dashboard' } },]">
+        { label: 'View Feed', icon: ['fas', 'rss'], route: { name: 'cam_feed', params: { id: c.id } } },
+        { label: 'View log', icon: ['fas', 'images'], route: { name: 'logs', params: { id: c.id } } },
+      ]">
 
       </drop_wrap>
     </div>

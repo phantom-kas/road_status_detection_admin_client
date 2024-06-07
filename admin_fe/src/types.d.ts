@@ -41,3 +41,14 @@ export type peerObjType = {
   dataChannel: RTCDataChannel | null
   user_name: String | null
 }
+
+export interface filterType {
+  period?: string
+  classes: ModelClassesType[]
+  date_from?: string
+  date_to?: string
+}
+export interface chartDataSetType {
+  label: string
+  data: []
+}

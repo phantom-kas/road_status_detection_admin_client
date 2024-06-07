@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { dashboardStore } from '../stores/dashboardStore';
 import camera_logs from './cameras/camera_logs.vue';
+import log_report_component from '@/components/log_report_component.vue';
+import overlay_modal from '@/components/overlay_modal.vue';
 import Chart from 'chart.js/auto';
 import { onMounted, ref, onBeforeMount, onUnmounted } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import 'chartjs-adapter-date-fns';
-import { stringify } from 'querystring';
 const chart = ref({})
 const chartElement = ref<HTMLCanvasElement | null>(null)
 const dash = dashboardStore()
@@ -42,8 +43,14 @@ onMounted(async () => {
   chart.value = new Chart(chartElement.value as HTMLCanvasElement, config)
 })
 
-
-
+const showLog = ref(false)
+const lid = ref(0)
+const log = ref<any>(null)
+const e = (y: any) => {
+  lid.value = y
+  lid.value = y.id
+  showLog.value = true
+} 
 </script>
 <template>
   <section class="mxpw mxph">
@@ -76,6 +83,7 @@ onMounted(async () => {
           </div>
         </div>
       </div>
+
       <!-- {{ showDashBoard }} -->
 
 
@@ -88,9 +96,17 @@ onMounted(async () => {
           </router-link>
 
         </div>
-        <camera_logs class="resss" />
+        <camera_logs @log="a => e(a)" class="resss" />
       </div>
     </div>
+
+
+
+    <div :key="lid" @click="showLog = false" v-if="showLog"
+      class="mxph pos_sticky pos_fix xy00 overlay v-flex  overflow_scroll log_r_c">
+      <log_report_component @click.prevent.stop class="max700 sdw mglra mt5" @close="showLog = false" :id="lid" :log />
+    </div>
+
   </section>
 </template>
 

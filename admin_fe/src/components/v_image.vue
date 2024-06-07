@@ -26,11 +26,20 @@ onMounted(() => {
   if (props.box) {
     dim.value = props.box
   }
-  if (image.value) {
+
+})
+const imageHeight = ref(0)
+const imageWidth = ref(0)
+const showBox = ref(false)
+const getIMageDimensions = () => {
+  if (image.value && !imgError.value) {
     console.log(image.value.naturalHeight)
     console.log(image.value.naturalWidth)
+    imageHeight.value = image.value.naturalHeight
+    imageWidth.value = image.value.naturalWidth
+    showBox.value = true
   }
-})
+}
 
 </script>
 <template>
@@ -43,9 +52,13 @@ onMounted(() => {
         <font-awesome-icon :icon="['fas', 'xmark']" size="xl" />
       </div>
       <div v-if="!imgError" clas=" pos_rel c-c rbg image_container mxpw">
-        <img ref="image" @error="imgError = true" class="mxpw" :src="url" alt="">
-        <div v-if="dim" class="pos_abs  bb"
-          :style="{ left: `calc((${(dim[0] / 640)} * 100%)`, top: `calc((${(dim[1] / 360)} * 100%)`, height: `calc((${(dim[3] - dim[1]) / 360}) * 100%)`, width: `calc((${(dim[2] - dim[0]) / 640}) * 100%)` }">
+        <img ref="image" @load="getIMageDimensions" @error="imgError = true" class="mxpw" :src="url" alt="">
+        <div v-if="dim && showBox" class="pos_abs  bb" :style="{
+          left: `calc((${(dim[0] / imageWidth)} * 100%)`,
+          top: `calc((${(dim[1] / imageHeight)} * 100%)`,
+          height: `calc((${(dim[3] - dim[1]) / imageHeight}) * 100%)`,
+          width: `calc((${(dim[2] - dim[0]) / imageWidth}) * 100%)`
+        }">
 
         </div>
       </div>
@@ -64,6 +77,7 @@ onMounted(() => {
 
 .bb {
   border: 5px solid var(--color2);
+  z-index: 100;
 }
 
 .islarg {

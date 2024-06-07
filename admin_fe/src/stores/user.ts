@@ -51,7 +51,7 @@ export const useUserStore = defineStore('user', () => {
   const profile_vertion = ref(useLocalStorage('profile_vertion', 0))
 
   const profile_img_url = ref(useLocalStorage('profile_img_url', ''))
-  const userProgInfo = ref(useLocalStorage('userProgInfo', {}))
+  const userProgInfo = ref<{ [key: string]: [value: string] }>(useLocalStorage('userProgInfo', {}))
   const getProfileimg_url = computed(() => profile_img_url.value)
 
   const setProfileImg = (url: string) => {

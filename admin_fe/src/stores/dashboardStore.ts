@@ -3,13 +3,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 
 export const dashboardStore = defineStore('dashboardStore', () => {
-  const detectsCount = ref<{ [key: string]: number }>({
-    car: 0,
-    person: 0,
-    potholes: 0,
-    animals: 0,
-    debris: 0
-  })
+  const detectsCount = ref<{ [key: string]: number }>({})
   const key = ref(0)
   const date = ref('')
   const classData = ref<any>({})
@@ -23,7 +17,7 @@ export const dashboardStore = defineStore('dashboardStore', () => {
     console.log('dd')
 
     return axios
-      .get('cameras/get_dash?model_id=1')
+      .get('cameras/get_dash?model_id=2')
       .then((res) => {
         // dashBord.value = res.data.data
         date.value = res.data.datenow
@@ -66,7 +60,15 @@ export const dashboardStore = defineStore('dashboardStore', () => {
 
   const updateDashboard = (msg: any) => {
     for (const key of Object.keys(msg)) {
-      if (key == 'model_id') {
+      if (
+        key == 'model_id' ||
+        key == 'cam' ||
+        key == 'location' ||
+        key == 'image' ||
+        key == 'cam_id' ||
+        key == 'image_url' ||
+        key == 'data'
+      ) {
         continue
       }
 

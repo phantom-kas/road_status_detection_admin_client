@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import day_night_switch from './day_night_switch.vue'
 import { ref } from 'vue'
 import drop_wrap from './drop_wrap.vue'
-
+import { useUserStore } from '../stores/user.ts'
+import router from '@/router'
 const menuIsOpen = ref<boolean>(false)
 
+const { profile_img_url, userInfo } = useUserStore()
 
 const toggleMenu = () => {
   menuIsOpen.value = !menuIsOpen.value
@@ -14,11 +16,18 @@ const toggleMenu = () => {
 
 
 const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
-  img_url: 'dsadas'
+  img_url: profile_img_url
 })
+
+const logOut = (e: string) => {
+  window.localStorage.clear()
+  //window.alert(e)
+  router.push({ name: 'login' })
+}
 </script>
 <template>
   <div class='h-flex fs-fs mxph nav_bar' :class="{ 'open': menuIsOpen }">
+
     <div class='navbar_ccc sdw1 mxph'>
 
       <div class='mavbar_cc mavbar_cc1  '>
@@ -107,8 +116,8 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
 </div>
 </div> -->
 
-        <drop_wrap class="mxpw deop  dd_to_left col_blk" :content="[
-          { label: 'Sign Out', icon: ['fas', 'arrow-right-from-bracket'], route: { name: 'login' } },]">
+        <drop_wrap @logout="e => logOut(e)" class="mxpw deop  dd_to_left col_blk" :content="[
+          { label: 'Sign Out', emit: ['logout', 'logout'], icon: ['fas', 'arrow-right-from-bracket'] },]">
 
 
           <template #icon>
@@ -117,11 +126,11 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
 
               <div class="nav_btn_c hv_ic_shw no_point">
                 <div>
-                  <img v-if="!profile_info._imgError" :src="profile_info.img_url" alt=""
+                  <img id="userimage" v-if="!profile_info._imgError" :src="profile_info.img_url" alt=""
                     @error="profile_info._imgError = true">
                   <font-awesome-icon v-else :icon="['far', 'circle-user']" size="xl" />
                 </div>
-                <span>User</span>
+                <span>{{ userInfo.fname }} </span>
               </div>
             </div>
 
@@ -132,16 +141,53 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
 
       </div>
     </div>
-    <div @click=toggleMenu :class="{ 'open': menuIsOpen }" class='cursor-pointer menubtn v-flex c-c'>
+
+    <div @click=toggleMenu :class="{ 'open': menuIsOpen }" class='cursor-pointer menubtn v-flex c-c z-i_1999'>
       <font-awesome-icon v-if="!menuIsOpen" :icon="['fas', 'chevron-right']" />
 
       <font-awesome-icon v-else :icon="['fas', 'chevron-left']" />
+    </div>
+    <div @click=toggleMenu class="overlay nav_overlay">
+
     </div>
   </div>
 </template>
 
 
 <style scoped>
+a.router-link-active>div {
+  background-color: red !important;
+}
+
+a.router-link-exact-active:hover {
+
+  background-color: var(--color2) !important;
+}
+
+a.router-link-exact-active {
+  border-radius: 2rem;
+  box-shadow: inset 0 0 0px 2px var(--color2);
+}
+
+a.router-link-exact-active>div {
+  background-color: var(--color2) !important;
+}
+
+
+#userimage {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+}
+
+.nav_overlay {
+  display: none;
+}
+
+.open+.nav_overlay {
+  display: block;
+}
+
 .nav_bar {
   font-size: var(--fs_11);
 }
@@ -164,6 +210,7 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  z-index: 100;
 }
 
 .nav_btn_c {
@@ -293,8 +340,21 @@ const profile_info = ref<{ img_url: string, _imgError?: boolean }>({
 }
 
 
+.nav_overlay {
+  opacity: 0;
+  z-index: -1;
+  width: 0px;
+  height: 0px;
+}
 
 @media screen and (max-width: 425px) {
+  .nav_overlay {
+    z-index: 1;
+    opacity: 1;
+    width: 100vw;
+    height: 100vh;
+  }
+
   .nav_bar {
     position: absolute;
     top: 0px;

@@ -35,9 +35,9 @@ defineEmits(['refreshparent'])
         {{ c.fname }} {{ c.lname }} {{ c.id }}
       </router-link>
       <drop_wrap @profile="e => d(e)" @trash="e => t(e)" class="  dd_to_left_i col_blk" :content="[
-        { label: 'View profile', emit: ['profile', c.id] },
-        { label: 'trash', icon: ['fas', 'trash'], emit: ['trash', 'bob'] },
-        { label: 'Todash', icon: ['fas', 'trash'], route: { name: 'dashboard' } },]">
+        { label: 'View profile', icon: ['far', 'id-card'], route: { name: 'edit_user', params: { id: c.id } } },
+        { label: 'Recent Activity', icon: ['fas', 'list'], route: { name: 'recent_activity', params: { id: c.id } } },
+        { label: 'Premissions', icon: ['fas', 'list-check'], route: { name: 'premissions', params: { id: c.id } } },]">
       </drop_wrap>
     </div>
 

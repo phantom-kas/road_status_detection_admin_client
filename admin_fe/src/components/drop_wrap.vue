@@ -39,7 +39,7 @@ const props = defineProps({
       </div>
     </slot>
 
-    <div class="dd_menu pos_abs rbg">
+    <div class="dd_menu sdw1 pos_abs rbg">
       <slot name='menu'>
         <div class='bg_col4  v-flex fs-fs fs1 gp05rem pil1 pt1 pb1 '>
 
@@ -88,6 +88,7 @@ const props = defineProps({
 }
 
 .dd_menu {
+  border-radius: 10px;
 
   position: absolute;
   transform: scale(1, 0.2) translate(0, -4rem);
@@ -98,6 +99,12 @@ const props = defineProps({
   padding-inline: 1rem;
   transition: transform 0.3s, opacity 0.1s;
 
+}
+
+.dd_menu>div>*:hover {
+  /* border-bottom: 2px solid var(--color1); */
+  box-shadow: 0px 3px var(--color2);
+  ;
 }
 
 .dd_active>.dd_menu {

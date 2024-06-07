@@ -29,7 +29,7 @@ export default [
             })
           },
           {
-            path: 'cam_feed-:lid?',
+            path: 'cam_feed',
             name: 'cam_feed',
             component: () => import('../views/cameras/camera_feed.vue'),
             props: (route: { params: { id: any; lid?: string } }) => ({

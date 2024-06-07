@@ -155,7 +155,7 @@ export const pusherStore = defineStore('pusherStore', () => {
     channel.bind('msg', (msg: any) => {
       console.log(msg)
       console.log(route.name)
-      if (route.name == 'all__logs' || route.name == 'all_logs') {
+      if (route.name == 'dashboard' || route.name == 'all__logs' || route.name == 'all_logs') {
         pageContent.add(msg)
         console.log('---------------------------------------------------')
       }

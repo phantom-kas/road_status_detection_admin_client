@@ -18,6 +18,14 @@ export default [
         props: (route: { params: { lid?: string } }) => ({
           lid: route.params.lid ?? null
         })
+      },
+      {
+        path: 'charts',
+        name: 'charts',
+        component: () => import('../views/charts_view.vue'),
+        props: (route: { params: { lid?: string } }) => ({
+          lid: route.params.lid ?? null
+        })
       }
     ]
   }

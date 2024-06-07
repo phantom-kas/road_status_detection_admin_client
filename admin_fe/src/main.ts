@@ -27,20 +27,30 @@ import {
   faCamera,
   faSliders,
   faArrowUpRightFromSquare,
-  faSquareRss
+  faSquareRss,
+  faRss,
+  faImages,
+  faList,
+  faListCheck
 } from '@fortawesome/free-solid-svg-icons'
 //arrow-up-right-from-square
 import {
   faCircleUser,
   faCircleCheck,
   faFile,
-  faCirclePlay
+  faCirclePlay,
+  faIdCard
 } from '@fortawesome/free-regular-svg-icons'
 
 import {} from '@fortawesome/free-brands-svg-icons'
 
 library.add(
+  faListCheck,
+  faList,
+  faIdCard,
   faCirclePlay,
+  faRss,
+  faImages,
   faSquareRss,
   faArrowUpRightFromSquare,
   faSliders,
