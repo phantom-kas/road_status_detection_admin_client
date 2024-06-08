@@ -6,6 +6,7 @@ import axios from 'axios';
 import overlay_modal from '@/components/overlay_modal.vue';
 import c_button from '@/components/buttons/c_button.vue';
 import Chart_component from '@/components/chart_component.vue'
+import Filter_component from '@/components/filter_component.vue'
 
 
 const filterMenuIsShow = ref(false)
@@ -62,15 +63,22 @@ const handleFilterClass = (c: ModelClassesType) => {
   console.log(filters.value.classes)
 
 }
+
+
+
+const handleFilter = (f: { period?: string | undefined; classes: { class: string; selected?: boolean | undefined; report_id: string; }[]; date_from?: string | undefined; date_to?: string | undefined; }) => {
+  filters.value = f
+  key.value = key.value + 1;
+}
 </script>
 <template>
   <section class="max1200  ">
 
 
-    <div class="h-flex fr fs-c gp1rem pt1 pb1 ff">
+    <!-- <div class="h-flex fr fs-c gp1rem pt1 pb1 ff">
       <button @click="handleTimePeriopChange('today')"
         class="today bgmute hov_glow cursor_pointer pbtn round1">Today</button>
-      <!-- <router-link ></router-link> -->
+     
       <button @click="handleTimePeriopChange('this_week')" class="today bgmute hov_glow cursor_pointer pbtn round1">This
         week</button>
       <button @click="handleTimePeriopChange('this_month')"
@@ -82,11 +90,11 @@ const handleFilterClass = (c: ModelClassesType) => {
         filters</button>
       <button @click="filterMenuIsShow = true" class="today bgmute hov_glow cursor_pointer pbtn round1 no_wrap">More
         filters <font-awesome-icon :icon="['fas', 'sliders']" /></button>
-    </div>
+    </div> -->
 
 
 
-    <overlay_modal title="Search Filters" v-if="filterMenuIsShow" prop-c-lasses="max500 filters_wrapper"
+    <!-- <overlay_modal title="Search Filters" v-if="filterMenuIsShow" prop-c-lasses="max500 filters_wrapper"
       @close="filterMenuIsShow = false">
       <div class="h-flex fr mt1 fs-c gp2rem">
         <div class="v-flex mxpw fss gp1rem ">
@@ -96,9 +104,7 @@ const handleFilterClass = (c: ModelClassesType) => {
 
         </div>
         <div class="v-flex  fr fs-fs fss">
-          <!-- <span class="mxpw  fs3 bold500">
-            Classes
-          </span> -->
+         
           <div class="h-flex fr fs-fs gp1rem">
             <span @click="handleFilterClass(c, i)" class="pbtn  round1 hov_glow_col1 cursor_pointer bg2 sdw1"
               :class="{ 'bgselected': c.selected }" v-for="c, i in classes" :key="i">
@@ -110,8 +116,8 @@ const handleFilterClass = (c: ModelClassesType) => {
           <c_button @click="key++, filterMenuIsShow = false" text="Search" class="bgc1 mxpw glow_on_hover" />
         </div>
       </div>
-    </overlay_modal>
-
+    </overlay_modal> -->
+    <Filter_component @filter="e => handleFilter(e)" />
     <div class="mxpw h-flex c-c">
       <Chart_component :key :filters />
     </div>

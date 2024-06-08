@@ -11,6 +11,7 @@ import input_component from '@/components/form_components/input_component.vue';
 import c_button from '@/components/buttons/c_button.vue';
 import type { ModelClassesType } from '@/types';
 import axios from 'axios'
+import Filter_component from '@/components/filter_component.vue'
 const filterMenuIsShow = ref(false)
 const url = 'cameras/get_logs'
 const tim = useDateStore();
@@ -86,15 +87,21 @@ const handleTimePeriopChange = (p: string) => {
   filters.value.period = p
   key.value++
 }
+
+
+const handleFilter = (f: { period?: string | undefined; classes: { class: string; selected?: boolean | undefined; report_id: string; }[]; date_from?: string | undefined; date_to?: string | undefined; }) => {
+  filters.value = f
+  key.value = key.value + 1;
+}
 </script>
 <template>
   <section class="max1200  ">
 
 
-    <div class="h-flex fr fs-c gp1rem pt1 pb1 ff">
+    <!-- <div class="h-flex fr fs-c gp1rem pt1 pb1 ff">
       <button @click="handleTimePeriopChange('today')"
         class="today bgmute hov_glow cursor_pointer pbtn round1">Today</button>
-      <!-- <router-link ></router-link> -->
+    
       <button @click="handleTimePeriopChange('this_week')" class="today bgmute hov_glow cursor_pointer pbtn round1">This
         week</button>
       <button @click="handleTimePeriopChange('this_month')"
@@ -106,8 +113,8 @@ const handleTimePeriopChange = (p: string) => {
         filters</button>
       <button @click="filterMenuIsShow = true" class="today bgmute hov_glow cursor_pointer pbtn round1 no_wrap">More
         filters <font-awesome-icon :icon="['fas', 'sliders']" /></button>
-    </div>
-
+    </div> -->
+    <Filter_component @filter="e => handleFilter(e)" />
     <table_list :key class='mxpw v-flex fs-c' :params="filters" :url="id ? url + '?cid=' + id : url"
       :table_class="'table max1000'">
 
@@ -152,7 +159,7 @@ const handleTimePeriopChange = (p: string) => {
     </table_list>
 
 
-    <overlay_modal title="Search Filters" v-if="filterMenuIsShow" prop-c-lasses="max500 filters_wrapper"
+    <!-- <overlay_modal title="Search Filters" v-if="filterMenuIsShow" prop-c-lasses="max500 filters_wrapper"
       @close="filterMenuIsShow = false">
       <div class="h-flex fr mt1 fs-c gp2rem">
         <div class="v-flex mxpw fss gp1rem ">
@@ -179,26 +186,11 @@ const handleTimePeriopChange = (p: string) => {
           <c_button @click="key++, filterMenuIsShow = false" text="Search" class="bgc1 mxpw glow_on_hover" />
         </div>
       </div>
-    </overlay_modal>
+    </overlay_modal> -->
     <!-- {{ filters }} -->
   </section>
 </template>
 <style>
-.filters_wrapper {
-  max-height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  /* margin-block: 2rem; */
-}
-
-.ff>* {
-  color: var(--color-text);
-}
-
-.ff>*:hover {
-  background-color: var(--color2);
-}
-
 @media screen and (max-width:400px) {
 
   table .row3,

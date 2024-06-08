@@ -6,6 +6,7 @@ import { useRouter } from 'vue-router'
 
 function parseJwt(token: string) {
   const base64Url = token.split('.')[1]
+
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
   const jsonPayload = decodeURIComponent(
     window
@@ -41,7 +42,7 @@ export const useUserStore = defineStore('user', () => {
 
   const countries = ref(useLocalStorage('countries', []))
   const profileImgDir = ref(useLocalStorage('profileImgDir', ''))
-
+  const imageUrlVersion = ref(useLocalStorage('imageUrlVersion', 0))
   const getRToken = ref(useLocalStorage('rtoken', ''))
   const getAToken = ref(useLocalStorage('atoken', ''))
   const removeAtkn = () => {
@@ -185,10 +186,16 @@ export const useUserStore = defineStore('user', () => {
   function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
   }
+
+  const updateImageVersion = () => {
+    const newp: string = profile_img_url.value.split('?')[0]
+    imageUrlVersion.value = imageUrlVersion.value + 1
+    profile_img_url.value = newp + `?v=${imageUrlVersion.value}`
+  }
   return {
     capitalizeFirstLetter,
     profile_img_url_root,
-
+    updateImageVersion,
     logOut,
     isAflt,
     updateProgInfo,
@@ -218,7 +225,7 @@ export const useUserStore = defineStore('user', () => {
     profile_vertion,
     updateProfileImg,
     isAmin,
-
+    imageUrlVersion,
     isPatient,
     isDoctor,
     isSpecialist,

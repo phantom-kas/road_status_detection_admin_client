@@ -3,9 +3,9 @@ import user_head from './user_head.vue'
 import horizontal_navbar from '@/components/horizontal_navbar.vue';
 import drop_wrap from '@/components/drop_wrap.vue';
 import axios from 'axios';
+import { useRoute } from 'vue-router';
 
-
-
+const route = useRoute()
 const props = defineProps({
   id: {
     type: String,
@@ -34,7 +34,7 @@ const removeOrAddPremission = (add: boolean, premission: string) => {
 </script>
 <template>
   <section class='v-flex c-c pos_rel'>
-    <user_head :id />
+    <user_head v-if="route.name != 'user_info'" :id />
 
     <horizontal_navbar class="mt1" :btns="[
       //   {
@@ -57,6 +57,11 @@ const removeOrAddPremission = (add: boolean, premission: string) => {
       {
         name: 'Edit userinfo',
         route: { name: 'edit_user' },
+        is_route: true
+      },
+      {
+        name: 'User info',
+        route: { name: 'user_info' },
         is_route: true
       }
 

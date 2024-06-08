@@ -26,7 +26,7 @@ const labels = [1, 2, 3, 3, 4, 5, 6, 7];
 const data = {
   labels: labels,
   datasets: [{
-    label: 'My First Dataset',
+    label: 'No data available',
     data: [65, 59, 80, 81, 56, 55, 40],
     fill: false,
     borderColor: 'rgb(75, 192, 192)',
@@ -100,7 +100,7 @@ onMounted(() => {
         config.data.labels = lineLabels
         config.type = 'bar'
         config.data.datasets = [{
-          label: 'My First Dataset',
+          label: 'No data available',
           data: lineDAta
         }]
         config.options = {

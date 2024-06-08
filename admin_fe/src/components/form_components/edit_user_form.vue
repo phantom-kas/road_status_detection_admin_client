@@ -7,13 +7,21 @@ import image_picker from '../image_picker.vue';
 import axios from 'axios';
 import type { userInfo } from '@/types';
 import c_button from '../buttons/c_button.vue';
+import { useUserStore } from '@/stores/user';
+import { useRoute } from 'vue-router';
 
+
+const route = useRoute()
+
+const user = useUserStore()
 const props = defineProps({
   id: {
     type: String,
     required: true
   }
 })
+
+
 
 interface formDataType {
   fname?: string;
@@ -25,21 +33,16 @@ const user_Info = ref<userInfo | null>(null);
 const imageError = ref(false)
 const showSelectImgGal = ref(false)
 const profileImage = ref()
-const formData = ref<
-  formDataType>({})
+const formData = ref<formDataType>({})
 const selectedImgInGalary = ref()
 const imgDir = ref();
 
 onMounted(() => {
   axios.get('users/get_users', { params: { uid: props.id } })
     .then(res => {
-
       user_Info.value = res.data.data[0]
       profileImage.value = res.data.profile_img_url + res.data.data[0].profile_img_url
     })
-  // .catch(err => {
-  //   console.error(err);
-  // })
 })
 const handleImgeCropGalaryImage = (e: any) => {
   selectedImgInGalary.value = e.img
@@ -53,11 +56,14 @@ const handleImgeCropGalaryImage = (e: any) => {
     headers: {
       'Content-Type': 'multipart/form-data'
     }
+  }).then(res => {
+    if (res.data.status == 'success')
+      if (props.id == user.userInfo.id || props.id == null) {
+        user.updateImageVersion()
+        user.userInfo['fname'] = formData.value.fname;
+        user.userInfo['lname'] = formData.value.lname;
+      }
   })
-    .then(res => {
-      console.log(res)
-    })
-
 }
 
 const handleSubmit = () => {
@@ -67,15 +73,12 @@ const handleSubmit = () => {
       'Content-Type': 'multipart/form-data'
     }
   })
-  // .then(res => {
-  //   console.log(res)
-  // })
-
 }
 </script>
 <template>
-  <form v-if="user_Info" @submit.prevent="handleSubmit()" class="pb100">
-    <div class="img mt3 v-flex fs-c ">
+  <form v-if="user_Info" @submit.prevent="handleSubmit()" class="pb100 mxpw v-flex  fs-c"
+    :class="{ 'pglr': route.name == 'edit_profile_info' }">
+    <div class="img mt3 v-flex fs-c max700 ">
 
       <h2 class="mxpw algn_l mb2">Profile picture </h2>
 
@@ -85,30 +88,32 @@ const handleSubmit = () => {
       <div v-if="imageError == false" class="avartar_img">
         <img @error="imageError = true" class="mxpw round sdw1" :src="profileImage" alt="user">
       </div>
-      <FontAwesomeIcon v-else :icon="['fas', 'user']" size="8x" />
+      <FontAwesomeIcon v-else :icon="['fas', 'user']" class='' size="8x" />
 
 
 
 
 
-      <div class="mxpw mt1 h-flex c-c gp1rem">
-        <button type="button" v-if="!profileImage" @click="showSelectImgGal = true" class="bgmute pbtn round1 hov_glow">
-          <font-awesome-icon :icon="['fas', 'camera']" size="xl" />
+      <div class="mxpw mt1 h-flex c-c gp1rem txt_sdw1 color_white">
+        <button type="button" v-if="!profileImage" @click="showSelectImgGal = true"
+          class="bgmute pbtn round1 hov_glow color_white sdw1">
+          <font-awesome-icon :icon="['fas', 'camera']" class="color_white" size="xl" />
         </button>
 
-        <button type="button" v-else @click="showSelectImgGal = true" class="bgmute pbtn round1 hov_glow">
+        <button type="button" v-else @click="showSelectImgGal = true"
+          class="bgmute color_white sdw1 pbtn round1 hov_glow">
           <font-awesome-icon :icon="['fas', 'pencil']" size="xl" />
         </button>
       </div>
     </div>
-    <div class="v-flex fg1 fs-sb  pos_rel  sitxt  gp1rem sb-c">
+    <div class="v-flex fg1 fs-sb  pos_rel max700  sitxt  gp1rem sb-c">
       <h2 class="mxpw algn_l">Personal Info</h2>
       <input_component :val="user_Info?.fname" @inputed="(e) => { formData.fname = e.value }" class='mxpw'
         label="First Name" name="fname" />
       <input_component :val="user_Info?.lname" @inputed="e => formData.lname = e.value" class='mxpw' label="Last Name"
         name="lname" />
-      <input_component :val="user_Info?.user_name" @inputed="e => formData.user_name = e.value" class='mxpw'
-        label="User Name" name="user_name" />
+      <!-- <input_component :val="user_Info?.user_name" @inputed="e => formData.user_name = e.value" class='mxpw'
+        label="User Name" name="user_name" /> -->
       <!-- <input_component :val="user_Info?." @inputed="e => formData.password = e.value" class='mxpw' label="Password" name="pass" /> -->
 
       <div class="mxpw v-flex c-c">
@@ -123,4 +128,8 @@ const handleSubmit = () => {
   </form>
 
 </template>
-<style scoped></style>
+<style scoped>
+.opopop {
+  color: white;
+}
+</style>

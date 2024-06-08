@@ -31,7 +31,8 @@ import {
   faRss,
   faImages,
   faList,
-  faListCheck
+  faListCheck,
+  faUserPen
 } from '@fortawesome/free-solid-svg-icons'
 //arrow-up-right-from-square
 import {
@@ -39,12 +40,15 @@ import {
   faCircleCheck,
   faFile,
   faCirclePlay,
-  faIdCard
+  faIdCard,
+  faAddressCard
 } from '@fortawesome/free-regular-svg-icons'
 
 import {} from '@fortawesome/free-brands-svg-icons'
 
 library.add(
+  faUserPen,
+  faAddressCard,
   faListCheck,
   faList,
   faIdCard,

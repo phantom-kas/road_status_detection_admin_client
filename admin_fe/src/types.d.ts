@@ -52,3 +52,10 @@ export interface chartDataSetType {
   label: string
   data: []
 }
+
+export interface userInfoType {
+  lname: string
+  fname: string
+  user_name: string
+  profile_img_url: string
+}

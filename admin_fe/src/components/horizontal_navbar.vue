@@ -84,4 +84,10 @@ const props = defineProps({
   color: var(--color-text);
   background-color: var(--color-background-mute);
 }
+
+a.router-link-exact-active {
+  background-color: var(--color-background-soft);
+  color: var(--color2-soft) !important;
+  font-weight: 900;
+}
 </style>

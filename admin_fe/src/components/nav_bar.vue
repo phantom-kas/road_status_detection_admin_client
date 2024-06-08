@@ -40,24 +40,24 @@ const logOut = (e: string) => {
           <span>Dashboard</span>
         </router-link>
 
-        <router-link :to="{ name: 'cameras' }" class="nav_btn_c hv_ic_shw">
+        <router-link :to="{ name: 'cameras' }" class="nav_btn_c hv_ic_shw eex">
           <div><font-awesome-icon :icon="['fas', 'video']" /> </div>
           <span>Cameras</span>
         </router-link>
 
 
 
-        <router-link :to="{ name: 'users' }" class="nav_btn_c hv_ic_shw">
+        <router-link :to="{ name: 'users' }" class="nav_btn_c hv_ic_shw eex">
           <div><font-awesome-icon :icon="['fas', 'users']" /> </div>
           <span>Users</span>
         </router-link>
 
 
-        <router-link :to="{ name: 'all__logs' }" class="nav_btn_c hv_ic_shw">
+        <router-link :to="{ name: 'all__logs' }" class="nav_btn_c hv_ic_shw eex">
           <div><font-awesome-icon :icon="['far', 'file']" /> </div>
           <span>Reports</span>
         </router-link>
-        <router-link :to="{ name: 'feeds' }" class="nav_btn_c hv_ic_shw">
+        <router-link :to="{ name: 'feeds' }" class="nav_btn_c hv_ic_shw eex">
           <div><font-awesome-icon :icon="['fas', 'square-rss']" /></div>
           <span>Feed</span>
         </router-link>
@@ -117,7 +117,10 @@ const logOut = (e: string) => {
 </div> -->
 
         <drop_wrap @logout="e => logOut(e)" class="mxpw deop  dd_to_left col_blk" :content="[
-          { label: 'Sign Out', emit: ['logout', 'logout'], icon: ['fas', 'arrow-right-from-bracket'] },]">
+          { label: 'Sign Out', emit: ['logout', 'logout'], icon: ['fas', 'arrow-right-from-bracket'] },
+          { label: 'Profile info', route: { name: 'profile_info' }, icon: ['far', 'address-card'] },
+          { label: 'Edit info', route: { name: 'edit_profile_info' }, icon: ['fas', 'user-pen'] }
+        ]">
 
 
           <template #icon>
@@ -155,17 +158,27 @@ const logOut = (e: string) => {
 
 
 <style scoped>
-a.router-link-active>div {
-  background-color: red !important;
+a {
+  box-shadow: none;
+
+  border-radius: 2rem;
+}
+
+a.router-link-active.eex>div {
+  background-color: var(--color2) !important;
+
+}
+
+a.router-link-active.eex {
+  box-shadow: inset 0 0 0px 2px var(--color2);
 }
 
 a.router-link-exact-active:hover {
-
   background-color: var(--color2) !important;
 }
 
 a.router-link-exact-active {
-  border-radius: 2rem;
+
   box-shadow: inset 0 0 0px 2px var(--color2);
 }
 

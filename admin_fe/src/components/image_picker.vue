@@ -163,7 +163,7 @@ const clearFile = () => {
 <template>
   <section class=' pglr mxpw sec v-flex fs-c' style="padding-top: 2rem;">
     <div v-show="imageSrc" class='crop_img_c' style="overflow: hidden;">
-      <img ref="img" class='' :src="imageSrc as string" alt="">
+      <img ref="img" class='cimage' :src="imageSrc as string" alt="">
     </div>
     <div class="h-flex c-c gp05rem fr  gp05rem mt1 fs2 bold500">
       <button type='button' v-if="!imageSrc" @click="imageInput?.click()"
@@ -194,7 +194,7 @@ const clearFile = () => {
   </section>
   <Teleport v-if="preview" to="#modals">
     <div class='overlay' @click="preview = false">
-      <div class='mxpw mxph h-flex c-c'>
+      <div class='mxpw mxph h-flex fs-c'>
         <div @click.stop="" class='p1 pglr  br5 bgsoft  gp1rem max1000'>
           <div class='mxpw h-flex fe-c'>
             <font-awesome-icon @click="preview = false" class='error' :icon="['fas', 'xmark']" size="2xl" />
@@ -216,7 +216,9 @@ const clearFile = () => {
 }
 
 .crop_img_c {
+  position: relative;
   height: calc(100vh - 500px);
+  height: calc(100vh - 300px);
 }
 
 .crop_img_c {
@@ -225,7 +227,7 @@ const clearFile = () => {
 
 .crop_img_c>img {
   max-width: 100%;
-  max-height: 100%;
+  height: min(20%, 600px);
   margin-inline: auto;
   object-fit: fill;
 }

@@ -154,3 +154,6 @@ button {
 .bg2 {
   background-color: var(--color-background-2);
 }
+.color_white {
+  color: white;
+}
